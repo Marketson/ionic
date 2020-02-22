@@ -1,0 +1,7 @@
+{
+  "name": "Marketson",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
