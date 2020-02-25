@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+import 'firebase/firestore';
 
 @Component({
   selector: 'app-tab1',
@@ -6,7 +9,8 @@ import { Component } from '@angular/core';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
-
-  constructor() {}
-
+  listings: Observable<any[]>;
+  constructor(firestore: AngularFirestore) {
+    this.listings = firestore.collection('listing').valueChanges();
+  }
 }

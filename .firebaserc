@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "marketson": {
+      "hosting": {
+        "app": [
+          "marketson"
+        ]
+      }
+    }
+  }
+}
