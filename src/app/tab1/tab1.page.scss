@@ -7,10 +7,15 @@ ion-slides {
     }
         .swiper-slide {
       display: block;
+      overflow-y: scroll;
+      scrollbar-width: none;
     }
 
     .swiper-slide h2 {
       margin-top: 2.8rem;
+      overflow-y: scroll;
+      display: block;
+      scrollbar-width: none;
     }
 
     .swiper-slide img {
@@ -18,6 +23,8 @@ ion-slides {
       max-width: 80%;
       margin: 60px 0 40px;
       pointer-events: none;
+      overflow-y: scroll;
+      scrollbar-width: none;
     }
 
     b {
@@ -37,4 +44,9 @@ ion-slides {
 
 ion-button {
   text-transform:none,
+}
+ion-button {
+  max-width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
 }

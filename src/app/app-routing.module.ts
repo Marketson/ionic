@@ -14,6 +14,10 @@ const routes: Routes = [
     path: 'tab5',
     loadChildren: () => import('./tab5/tab5.module').then( m => m.Tab5PageModule)
   },
+  {
+    path: 'wishlist-modal',
+    loadChildren: () => import('./wishlist-modal/wishlist-modal.module').then( m => m.WishlistModalPageModule)
+  },
 ];
 @NgModule({
   imports: [

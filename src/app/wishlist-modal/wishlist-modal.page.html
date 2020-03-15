@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add a Wish</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+    <ion-item>
+      <ion-label position="floating">Title</ion-label>
+      <ion-input #name (keyup)="getName(name.value)" clearInput></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Category</ion-label>
+      <ion-select #selectcategory [(ngModel)]="category" (change)="getCategory(category)" interface="action-sheet">
+        <ion-select-option value="sports">Sports Equipment</ion-select-option>
+        <ion-select-option value="clothes">Clothes</ion-select-option>
+        <ion-select-option value="household">Household Items</ion-select-option>
+        <ion-select-option value="other">Other</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </div>
+  <br>
+  <div class="ion-padding">
+    <ion-button expand="block" (click)="add()" class="ion-no-margin">Add</ion-button>
+  </div>
+</ion-content>

@@ -1,34 +1,44 @@
 import { Component } from '@angular/core';
 
+import { ModalController } from '@ionic/angular';
+import { WishlistModalPage } from '../wishlist-modal/wishlist-modal.page';
+
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+import 'firebase/firestore';
+import { firestore } from 'firebase';
+
+// ? filter (add to wishlist query after auth is done.)
+// , ref => ref.where('owner', '==', 'large')
+
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
+  wishlist: Observable<any[]>;
 
-  // ? This is filler data. 
-  // TODO: Replace with firebase...
-  wishlist: Array<any> = [
-    {
-      title: 'BRED1',
-      owner: 'INSERT UID HERE'
-    },
-    {
-      title: 'BRED2',
-      owner: 'INSERT UID HERE'
-    },
-    {
-      title: 'BRED3',
-      owner: 'INSERT UID HERE'
-    },
-  ];
+  constructor(private firestore: AngularFirestore, public modalCtrl: ModalController) {
+    this.wishlist = firestore.collection('wishlists').valueChanges({ idField: 'propertyId' });
+  }
 
-  constructor() { }
+  // CRUD
+  async add(event) {
+    const modal = await this.modalCtrl.create({
+      component: WishlistModalPage,
+    });
+    modal.onDidDismiss().then((data) => {
+      this.firestore.collection('wishlists').add({
+        title: data.data.name,
+        category: data.data.category
+      })
+    });
 
+    return await modal.present();
+  }
 
-  public add(event) {
-    // TODO: add modal popup for adding wish
-    console.log('Hey there...')
+  public delete(id) {
+    this.firestore.collection('wishlists').doc(id).delete()
   }
 }

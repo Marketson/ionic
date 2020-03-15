@@ -12,14 +12,20 @@
       <ion-title size="large">Listings</ion-title>
     </ion-toolbar>
   </ion-header>
-
   <ion-slides [options]="slideOpts">
     <ion-slide *ngFor="let listing of listings | async">
-      <h2>{{ listing.title }}</h2>
-      <br>
+      <img src="https://placekitten.com/240/280" />
+
+      <h1>{{ listing.title }}</h1>
+      <ion-chip>
+        <ion-label>{{listing.category}}</ion-label>
+      </ion-chip>
       <p>{{ listing.description }}</p>
       <br>
-      <ion-button expand="block">CHAT!</ion-button>
+      <ion-button expand="block">Send Offer</ion-button>
+      <br>
+      <br>
+      <br>
     </ion-slide>
     <ion-slide>
       <h1>The end of the world...</h1>
@@ -27,6 +33,8 @@
       <br>
       <br>
       <ion-button size="large">Let's go!</ion-button>
+
+
     </ion-slide>
   </ion-slides>
 
